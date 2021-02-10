@@ -20,7 +20,7 @@ def visualize():
             hgt = line.split(" ")[4]
 
             #print("line::"+str(line.split(" ")))
-            cv2.rectangle(image, (int(float(x)*width),int(float(y)*height)), (int(float(x)*width+float(wid)*width),int(float(y)*height+float(hgt)*height)), (255,0,0), -1)
+            cv2.rectangle(image, (int(float(x)*width-float(wid)/2*width),int(float(y)*height-float(hgt)*height/2)), (int(float(x)*width+float(wid)/2*width),int(float(y)*height+float(hgt)*height/2)), (255,0,0), -1)
             line = fp.readline()
 
     cv2.namedWindow("image")
