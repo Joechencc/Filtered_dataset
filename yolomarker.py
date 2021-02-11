@@ -18,6 +18,7 @@ def click_and_crop(event, x, y, flags, param):
     global count
     global width
     global height
+    global output
     if event ==cv2.EVENT_LBUTTONDOWN:
         #count : 1-7 hinge frameOT frameOB doorHT doorHB doorOT doorOB
         if count == 4:
@@ -93,6 +94,7 @@ def filter():
         image = cv2.imread(image_p)
         height = image.shape[0]
         width = image.shape[1]
+        print("path.join(new_label_path,new_label):::::::::"+str(path.join(new_label_path,new_label)))
         with open(path.join(new_label_path,new_label), "w") as output: 
             cv2.namedWindow("image")
             cv2.setMouseCallback("image", click_and_crop)
@@ -136,6 +138,7 @@ def filter():
         print("saved as "+str(new_label))
         done_flag = input("Are you satisfy with this labelling? y/n:::")
         if done_flag == 'y':
+            output.close()
             os.remove(path.join(images_path,f))
         else:
             os.remove(path.join(new_label_path,new_label))
