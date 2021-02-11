@@ -26,43 +26,43 @@ def click_and_crop(event, x, y, flags, param):
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
             #print("x:::::"+str(x/width))
             #print("y:::::"+str(y/height))
-            output.write("4 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("4 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 5:
             print("frame Open Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("5 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("5 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 6:
             print("Door Hinge Top, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("6 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("6 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 7:
             print("Door Hinge Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("7 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("7 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 8:
             print("Door Open Top, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("8 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("8 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 9:
             print("Door Open Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("9 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("9 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 0:
             print("frame Hinge top, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("10 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("10 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 1:
             print("frame Hinge Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("11 "+str((x-10)/width)+" "+str((y-10)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("11 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 2:
             print("label hinge left upper, current mode count:"+str(count))
             global hinge_x_l,hinge_y_r
             hinge_x_l=x
             hinge_y_r=y
-            output.write("3 "+str(x/width)+" "+str(y/height)+" ")
         elif count == 3:
             print("label hinge lower bottom, current mode count:"+str(count))
+            output.write("3 "+str(x/width+(x-hinge_x_l)/(2*width))+" "+str(y/height+(y-hinge_y_r)/(2*height))+" ")
             output.write(str((x-hinge_x_l)/width)+" "+str((y-hinge_y_r)/height)+"\n")
         else:
             print("count::"+str(count))
