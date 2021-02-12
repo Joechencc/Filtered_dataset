@@ -137,6 +137,7 @@ def filter():
                     count = 1
         print("saved as "+str(new_label))
         done_flag = input("Are you satisfy with this labelling? y/n:::")
+        print("done_flag"+str(done_flag))
         if done_flag == 'y':
             output.close()
             os.remove(path.join(images_path,f))
