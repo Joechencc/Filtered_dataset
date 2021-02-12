@@ -7,11 +7,11 @@ def visualize():
     desktop = path.join(path.join(path.expanduser('~')), 'Desktop') 
     images_path = desktop+"/Filtered_dataset/scaled_images_backup"
     new_label_path = desktop+"/Filtered_dataset/labels"
-    image_p =path.join(images_path,"0e8a4281ac3e1175.jpg")
+    image_p =path.join(images_path,"0c697169b1207217.jpg")
     image = cv2.imread(image_p)
     height = image.shape[0]
     width = image.shape[1]
-    with open(path.join(new_label_path,"0e8a4281ac3e1175.txt")) as fp:
+    with open(path.join(new_label_path,"0c697169b1207217.txt")) as fp:
         line = fp.readline()
         while line:
             x = line.split(" ")[1]
