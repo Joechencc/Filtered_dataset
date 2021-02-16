@@ -3,7 +3,7 @@ from os import path
 from shutil import copyfile
 
 def filter():
-    label_path = "/home/cchen_backup/Desktop/DoorDetect-Dataset/labels"
+    label_path = "/home/cchen_backup/Desktop/DoorDetect-Dataset/new_labels"
     images_path = "/home/cchen_backup/Desktop/DoorDetect-Dataset/images"
     filter_path = "/home/cchen_backup/Desktop/DoorDetect-Dataset/filter_labels"
     not_filter_path = "/home/cchen_backup/Desktop/DoorDetect-Dataset/non_filter_labels"
