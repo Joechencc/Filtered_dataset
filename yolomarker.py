@@ -27,35 +27,35 @@ def click_and_crop(event, x, y, flags, param):
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
             #print("x:::::"+str(x/width))
             #print("y:::::"+str(y/height))
-            output.write("4 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("3 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 5:
             print("frame Open Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("5 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("4 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 6:
             print("Door Hinge Top, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("6 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("5 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 7:
             print("Door Hinge Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("7 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("6 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 8:
             print("Door Open Top, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("8 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("7 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 9:
             print("Door Open Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("9 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("8 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 0:
             print("frame Hinge top, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("10 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("9 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 1:
             print("frame Hinge Bottom, current mode count:"+str(count))
             cv2.rectangle(image,(x-10,y-10),(x+10,y+10),(255,0,0),-1)
-            output.write("11 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
+            output.write("10 "+str((x)/width)+" "+str((y)/height)+" "+str(20/width)+" "+str(20/height)+"\n")
         elif count == 2:
             print("label hinge left upper, current mode count:"+str(count))
             global hinge_x_l,hinge_y_r
@@ -63,8 +63,28 @@ def click_and_crop(event, x, y, flags, param):
             hinge_y_r=y
         elif count == 3:
             print("label hinge lower bottom, current mode count:"+str(count))
-            output.write("3 "+str(x/width+(x-hinge_x_l)/(2*width))+" "+str(y/height+(y-hinge_y_r)/(2*height))+" ")
+            output.write("2 "+str(hinge_x_l/width+(x-hinge_x_l)/(2*width))+" "+str(hinge_y_r/height+(y-hinge_y_r)/(2*height))+" ")
             output.write(str((x-hinge_x_l)/width)+" "+str((y-hinge_y_r)/height)+"\n")
+
+        elif count == 10:
+            print("door flap left upper, current mode count:"+str(count))
+            global flap_x_l,flap_y_r
+            flap_x_l=x
+            flap_y_r=y
+        elif count == 11:
+            print("door flap lower bottom, current mode count:"+str(count))
+            output.write("0 "+str(flap_x_l/width+(x-flap_x_l)/(2*width))+" "+str(flap_y_r/height+(y-flap_y_r)/(2*height))+" ")
+            output.write(str((x-flap_x_l)/width)+" "+str((y-flap_y_r)/height)+"\n")
+        
+        elif count == 12:
+            print("handle left upper, current mode count:"+str(count))
+            global handle_x_l,handle_y_r
+            handle_x_l=x
+            handle_y_r=y
+        elif count == 13:
+            print("handle lower bottom, current mode count:"+str(count))
+            output.write("1 "+str(handle_x_l/width+(x-handle_x_l)/(2*width))+" "+str(handle_y_r/height+(y-handle_y_r)/(2*height))+" ")
+            output.write(str((x-handle_x_l)/width)+" "+str((y-handle_y_r)/height)+"\n")
         else:
             print("count::"+str(count))
             print("error")
@@ -79,12 +99,12 @@ def click_and_crop(event, x, y, flags, param):
 def filter():
     desktop = path.join(path.join(path.expanduser('~')), 'Desktop') 
     label_path = desktop+"/Filtered_dataset/labels"
-    images_path = desktop+"/Filtered_dataset/scaled_images"
-    new_label_path = desktop+"/Filtered_dataset/new_labels"
+    images_path = desktop+"/Filtered_dataset/save_file_1"
+    new_label_path = desktop+"/Filtered_dataset/lab_label"
     mode = "view"
 
     for f in listdir(images_path):
-        new_label = f.split(".")[0] + ".txt"
+        new_label = f.split(".")[0] + "."+f.split(".")[1]+".txt"
         image_p =path.join(images_path,f)
         global image
         global output
@@ -135,6 +155,14 @@ def filter():
                     count = 0
                 elif key == ord("1"):
                     count = 1
+                elif key == ord("f"):
+                    count = 10
+                elif key == ord("g"):
+                    count = 11
+                elif key == ord("h"):
+                    count = 12
+                elif key == ord("j"):
+                    count = 13
         print("saved as "+str(new_label))
         done_flag = input("Are you satisfy with this labelling? y/n:::")
         print("done_flag"+str(done_flag))

@@ -5,13 +5,13 @@ import numpy as np
 
 def visualize():
     desktop = path.join(path.join(path.expanduser('~')), 'Desktop') 
-    images_path = desktop+"/Filtered_dataset/scaled_images_backup"
-    new_label_path = desktop+"/Filtered_dataset/labels"
-    image_p =path.join(images_path,"0ec87d84a014e1e7.jpg")
+    images_path = desktop+"/Filtered_dataset/save_file_1_bk"
+    new_label_path = desktop+"/Filtered_dataset/lab_label"
+    image_p =path.join(images_path,"image_26_2.08.jpg")
     image = cv2.imread(image_p)
     height = image.shape[0]
     width = image.shape[1]
-    with open(path.join(new_label_path,"0ec87d84a014e1e7.txt")) as fp:
+    with open(path.join(new_label_path,"image_26_2.08.txt")) as fp:
         line = fp.readline()
         while line:
             x = line.split(" ")[1]
